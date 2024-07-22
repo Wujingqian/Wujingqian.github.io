@@ -7,5 +7,5 @@ redirect_from:
   - /about.html
 ---
 
-I'm a first-year PhD student who is very fortunate to be advised by [Prof. Edmund Y. Lam](https://www.eee.hku.hk/~elam/) of Imaging Systems Laboratory (ISL) from [The University of Hong Kong](https://www.hku.hk/). My research interests include computer vision, computational imaging, neuromorphic imaging, machine learning, and AI. [Email](jingqianwu@connect.hku.hk)
+I'm a first-year PhD student who is very fortunate to be advised by [Prof. Edmund Y. Lam](https://www.eee.hku.hk/~elam/) of Imaging Systems Laboratory (ISL) from [The University of Hong Kong](https://www.hku.hk/). My research interests include computer vision, computational imaging, neuromorphic imaging, machine learning, and AI. Feel free to contact me via [Email](jingqianwu@connect.hku.hk)
 
