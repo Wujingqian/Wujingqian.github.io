@@ -23,10 +23,10 @@ author:
   # Biographic information
   avatar           : "images/3.png"
   name             : "Jingqian Wu"
-  pronouns         : "He/him"  
-  bio              : "Short biography for the left-hand sidebar"
+  pronouns         : #"He/him"  
+  bio              : #"Short biography for the left-hand sidebar"
   location         : "Beijing & Hong Kong SAR, China"
-  employer         : "The University \\ of Hong Kong"
+  employer         : "The University <br /> of Hong Kong"
   uri              : # URL
   email            : "jingqianwu@connect.hku.hk" 
 
