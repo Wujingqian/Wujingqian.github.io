@@ -7,7 +7,7 @@
 # server process.
 
 # Basic Site Settings
-locale                   : "Beijing & Hong Kong SAR, China"
+locale                   : "Beijing & <br /> Hong Kong SAR, China"
 title                    : "Jingqian's Homepage"
 title_separator          : "-"
 name                     : &name "Jingqian Wu"
