@@ -23,10 +23,10 @@ author:
   # Biographic information
   avatar           : "images/3.png"
   name             : "Jingqian Wu"
-  pronouns         : # example: "she/her"  
+  pronouns         : "He/him"  
   bio              : "Short biography for the left-hand sidebar"
   location         : "Beijing & Hong Kong SAR, China"
-  employer         : "The University of Hong Kong"
+  employer         : "The University \\ of Hong Kong"
   uri              : # URL
   email            : "jingqianwu@connect.hku.hk" 
 
@@ -48,7 +48,7 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # "bsky.app" # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
