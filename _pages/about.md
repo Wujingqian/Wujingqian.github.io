@@ -6,7 +6,7 @@ subtitle: A young scholar who is passionate about research and innovation.
 
 profile:
   align: right
-  image: Jingqian_Pic.jpg
+  image: Jingqian_Pic3.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     Chow Yei Ching Building, Room 512
