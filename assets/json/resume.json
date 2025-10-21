@@ -73,25 +73,31 @@
     }
   ],
   "skills": [
-      {
-        "name": "Computer Science",
-        "level": "Master",
-        "icon": "fa-solid fa-hashtag",
-        "keywords": ["Python", "C++", "Java", "Git", "Linux"]
-      },
-      {
-        "name": "Vision and Imaging",
-        "level": "Master",
-        "icon": "fa-solid fa-hashtag",
-        "keywords": ["3D Gaussian Splatting", "Vision Transformer", "Event Camera", "Super-Resolution", "Visual Recognition"]
-      },
-      {
-        "name": "Deep Learning",
-        "level": "Master",
-        "icon": "fa-solid fa-hashtag",
-        "keywords": ["PyTorch", "Deep Neural Networks", "CUDA"]
-      }
-    ],
+    {
+      "name": "Computer Science",
+      "level": "Master",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": ["Python", "C++", "Java", "Git", "Linux"]
+    },
+    {
+      "name": "Vision and Imaging",
+      "level": "Master",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "3D Gaussian Splatting",
+        "Vision Transformer",
+        "Event Camera",
+        "Super-Resolution",
+        "Visual Recognition"
+      ]
+    },
+    {
+      "name": "Deep Learning",
+      "level": "Master",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": ["PyTorch", "Deep Neural Networks", "CUDA"]
+    }
+  ],
   "languages": [
     {
       "language": "Mandarin",
