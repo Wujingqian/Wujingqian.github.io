@@ -1424,59 +1424,38 @@ figure.cover {
   }
 }
 
-/* === Safer: bigger thumbnails only when a preview image actually exists === */
+/* ===== Bigger publication thumbnails (home + publications page) ===== */
 
-/* 先确保默认是单列（防止之前的样式还在） */
-.publications ol.bibliography li {
-  display: block;
-}
-
-/* 缩略图通用放大与美化 */
-.publications ol.bibliography li .preview {
-  width: 100%;
-  max-width: 260px;     /* 想再大可调 260~300 */
+/* 让两处都生效：主页的 selected publications & /publications/ 页面 */
+.selected-publications ol.bibliography li img.preview,
+.publications           ol.bibliography li img.preview {
+  /* 放大尺寸：按照屏宽自适应，但不超过 320px，可按需调大 */
+  width: clamp(180px, 28vw, 320px);
   height: auto;
+
+  /* 左浮动，文字在右侧环绕；并加点留白与圆角、阴影 */
+  float: left;
+  margin: 0 16px 8px 0;
   border-radius: 10px;
-  margin: 0 0 0.5rem 0;
-  object-fit: cover;
   box-shadow: 0 0 8px rgba(0,0,0,0.22);
-  transition: transform 0.2s ease;
-}
-.publications ol.bibliography li .preview:hover {
-  transform: scale(1.02);
 }
 
-/* 仅当该条目“确实包含缩略图”时，改用图左文右的两列布局（用 :has 选择器做保护） */
-@supports selector(:has(*)) {
-  .publications ol.bibliography li:has(.preview) {
-    display: grid;
-    grid-template-columns: minmax(180px, 260px) 1fr; /* 左图最大 260px，右文自适应 */
-    grid-column-gap: 16px;
-    align-items: start;
-  }
+/* 列表项清除浮动，避免后续条目被吃进去 */
+.selected-publications ol.bibliography li::after,
+.publications           ol.bibliography li::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-/* 中屏稍微收窄 */
-@media (max-width: 992px) {
-  @supports selector(:has(*)) {
-    .publications ol.bibliography li:has(.preview) {
-      grid-template-columns: minmax(160px, 220px) 1fr;
-    }
-  }
-  .publications ol.bibliography li .preview {
-    max-width: 220px;
-  }
-}
-
-/* 小屏一律单列：图片在上、文字在下 */
+/* 小屏回到单列：图在上，文在下 */
 @media (max-width: 576px) {
-  @supports selector(:has(*)) {
-    .publications ol.bibliography li:has(.preview) {
-      grid-template-columns: 1fr;
-    }
-  }
-  .publications ol.bibliography li .preview {
-    max-width: 100%;
-    margin-bottom: 0.75rem;
+  .selected-publications ol.bibliography li img.preview,
+  .publications           ol.bibliography li img.preview {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 0 0 10px 0;
   }
 }
+
