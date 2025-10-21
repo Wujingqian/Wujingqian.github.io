@@ -6,11 +6,9 @@
     "email": "jingqianwu@connect.hku.hk",
     "summary": "A young scholar who is passionate about research and innovation",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "The University of Hong Kong",
+      "city": "Hong Kong",
+      "countryCode": "China"
     }
   },
   "education": [
@@ -22,24 +20,6 @@
       "studyType": "Ph.D.",
       "startDate": "2024-01-15",
       "endDate": "Present",
-    },
-    {
-      "institution": "Northwestern University (NU)",
-      "location": "Evanston, Illinois, United States",
-      "url": "https://www.northwestern.edu/",
-      "area": "Computer Science",
-      "studyType": "M.S.",
-      "startDate": "2022-09-01",
-      "endDate": "2023-12-01",
-    },
-    {
-      "institution": "Wake Forest University (WFU)",
-      "location": "Winston-Salem, North Carolina, United States",
-      "url": "https://www.wfu.edu/",
-      "area": "Computer Science and Finance",
-      "studyType": "B.S.",
-      "startDate": "2018-08-15",
-      "endDate": "2022-05-31",
     }
   ],
   "awards": [
