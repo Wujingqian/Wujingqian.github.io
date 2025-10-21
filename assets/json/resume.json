@@ -1,12 +1,10 @@
 {
   "basics": {
     "name": "Jingqian Wu",
-    "label": "Scientist",
-    "image": "",
+    "label": "Ph.D. Candidate",
+    "image": "Jingqian_Pic.jpg",
     "email": "jingqianwu@connect.hku.hk",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "summary": "A young scholar who is passionate about research and innovation",
     "location": {
       "address": "2712 Broadway St",
       "postalCode": "CA 94115",
