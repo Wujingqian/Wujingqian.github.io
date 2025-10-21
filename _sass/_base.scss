@@ -1424,53 +1424,59 @@ figure.cover {
   }
 }
 
-/* === Bigger preview images for publications & selected publications === */
-/* 图左文右的两列布局（桌面端）*/
+/* === Safer: bigger thumbnails only when a preview image actually exists === */
+
+/* 先确保默认是单列（防止之前的样式还在） */
 .publications ol.bibliography li {
-  display: grid;
-  grid-template-columns: 240px 1fr; /* 左图最大 240px，右侧文字自适应 */
-  grid-column-gap: 16px;
-  align-items: start;
+  display: block;
 }
 
-/* 放大缩略图 + 美化 */
+/* 缩略图通用放大与美化 */
 .publications ol.bibliography li .preview {
-  width: 100%;            /* 占满左列 */
-  max-width: 240px;       /* 和上面的列宽一致 */
+  width: 100%;
+  max-width: 260px;     /* 想再大可调 260~300 */
   height: auto;
-  border-radius: 12px;
-  margin: 0;              /* 去掉默认外边距，确保两列对齐 */
+  border-radius: 10px;
+  margin: 0 0 0.5rem 0;
   object-fit: cover;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.25s ease;
+  box-shadow: 0 0 8px rgba(0,0,0,0.22);
+  transition: transform 0.2s ease;
 }
-
 .publications ol.bibliography li .preview:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
-/* 让按钮行、期刊行更贴近图片顶部，看起来更紧凑 */
-.publications ol.bibliography li .abbr { margin-top: 0; }
-.publications ol.bibliography li .links { margin-top: 0.35rem; }
+/* 仅当该条目“确实包含缩略图”时，改用图左文右的两列布局（用 :has 选择器做保护） */
+@supports selector(:has(*)) {
+  .publications ol.bibliography li:has(.preview) {
+    display: grid;
+    grid-template-columns: minmax(180px, 260px) 1fr; /* 左图最大 260px，右文自适应 */
+    grid-column-gap: 16px;
+    align-items: start;
+  }
+}
 
-/* --- 响应式：中屏缩小一点 --- */
+/* 中屏稍微收窄 */
 @media (max-width: 992px) {
-  .publications ol.bibliography li {
-    grid-template-columns: 200px 1fr;
+  @supports selector(:has(*)) {
+    .publications ol.bibliography li:has(.preview) {
+      grid-template-columns: minmax(160px, 220px) 1fr;
+    }
   }
   .publications ol.bibliography li .preview {
-    max-width: 200px;
-    border-radius: 10px;
+    max-width: 220px;
   }
 }
 
-/* --- 小屏改为单列，图片在上，文字在下 --- */
+/* 小屏一律单列：图片在上、文字在下 */
 @media (max-width: 576px) {
-  .publications ol.bibliography li {
-    grid-template-columns: 1fr;  /* 单列 */
+  @supports selector(:has(*)) {
+    .publications ol.bibliography li:has(.preview) {
+      grid-template-columns: 1fr;
+    }
   }
   .publications ol.bibliography li .preview {
     max-width: 100%;
-    margin-bottom: 0.75rem;      /* 图与文字间距 */
+    margin-bottom: 0.75rem;
   }
 }
