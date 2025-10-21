@@ -1424,23 +1424,26 @@ figure.cover {
   }
 }
 
-/* ===== Bigger publication thumbnails (home + publications page) ===== */
+/* ===== Big thumbnails for publications (home + /publications/) ===== */
 
-/* 让两处都生效：主页的 selected publications & /publications/ 页面 */
-.selected-publications ol.bibliography li img.preview,
-.publications           ol.bibliography li img.preview {
-  /* 放大尺寸：按照屏宽自适应，但不超过 320px，可按需调大 */
-  width: clamp(180px, 28vw, 320px);
-  height: auto;
-
-  /* 左浮动，文字在右侧环绕；并加点留白与圆角、阴影 */
+/* 让图块左浮动，文字环绕 */
+.selected-publications ol.bibliography li .preview,
+.publications           ol.bibliography li .preview {
   float: left;
   margin: 0 16px 8px 0;
+}
+
+/* 真正放大图片：注意命中的是 .preview 里的 img */
+.selected-publications ol.bibliography li .preview img,
+.publications           ol.bibliography li .preview img {
+  width: clamp(220px, 30vw, 360px) !important; /* 按需把 360px 再调大/小 */
+  height: auto;
+  display: block;
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0,0,0,0.22);
 }
 
-/* 列表项清除浮动，避免后续条目被吃进去 */
+/* 清浮动，避免下一个 <li> 被吞 */
 .selected-publications ol.bibliography li::after,
 .publications           ol.bibliography li::after {
   content: "";
@@ -1448,14 +1451,17 @@ figure.cover {
   clear: both;
 }
 
-/* 小屏回到单列：图在上，文在下 */
+/* 小屏回落为单列：图在上，文在下 */
 @media (max-width: 576px) {
-  .selected-publications ol.bibliography li img.preview,
-  .publications           ol.bibliography li img.preview {
+  .selected-publications ol.bibliography li .preview,
+  .publications           ol.bibliography li .preview {
     float: none;
-    display: block;
-    width: 100%;
     margin: 0 0 10px 0;
+  }
+
+  .selected-publications ol.bibliography li .preview img,
+  .publications           ol.bibliography li .preview img {
+    width: 100% !important;
   }
 }
 
