@@ -41,14 +41,42 @@
     }
   ],
   "awards": [
-    {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
-    }
-  ],
+  {
+    "title": "Best Paper Award (Third Place)",
+    "date": "2024-09-25",
+    "awarder": "IEEE 34th International Workshop on Machine Learning for Signal Processing (MLSP)"
+  },
+  {
+    "title": "Hong Kong PhD Fellowship Scheme 2024 Nomination",
+    "date": "2024-01-01",
+    "awarder": "Research Grants Council (RGC) of Hong Kong"
+  },
+  {
+    "title": "Poster Presentation Acceptance at MMLS 2023",
+    "date": "2023-5-10",
+    "awarder": "Midwest Machine Learning Symposium (MMLS)"
+  },
+  {
+    "title": "Wake Forest University CS Honor Student",
+    "date": "2022-05-01",
+    "awarder": "Wake Forest University"
+  },
+  {
+    "title": "Third Place in DCASE 2021 Challenge (Task 6: Automated Audio Captioning)",
+    "date": "2021-10-15",
+    "awarder": "IEEE AASP Challenge on Detection and Classification of Acoustic Scenes and Events (DCASE)"
+  },
+  {
+    "title": "URECA Research Scholar Award",
+    "date": "2020-08-01",
+    "awarder": "Wake Forest University"
+  },
+  {
+    "title": "Third Prize in China Region and Special Award, Imagine Cup 2017",
+    "date": "2017-08-15",
+    "awarder": "Microsoft Imagine Cup"
+  }
+],
   "publications": [
   {
     "name": "Segment Anything Model Is a Good Teacher for Local Feature Learning",
