@@ -11,7 +11,7 @@
       "city": "San Francisco",
       "countryCode": "US",
       "region": "California"
-    },
+    }
   },
   "education": [
     {
@@ -21,7 +21,7 @@
       "area": "Computational Imaging and Computer Vision",
       "studyType": "Ph.D.",
       "startDate": "2024-01-15",
-      "endDate": "present",
+      "endDate": "Present",
     },
     {
       "institution": "Northwestern University (NU)",
