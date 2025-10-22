@@ -26,4 +26,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-My name is Jingqian Wu, a Ph.D. candidate from the Faculty of Engineering, [The University of Hong Kong (HKU)](https://www.hku.hk/), supervised by [Professor Edmund Y. Lam](https://www.eee.hku.hk/~elam/) and [Professor Xihui Liu](https://xh-liu.github.io/). My research interests lie in Computer Vision, Computational Imaging, and AI. Before joining HKU, I obtained my Master's Degree in Computer Science from [Northwestern University (NU)](https://www.northwestern.edu/) and a Double Bachelor's Degree in Computer Science and Finance from [Wake Forest University (WFU)](https://www.wfu.edu/).
+My name is Jingqian Wu, a Ph.D. candidate from the Faculty of Engineering, [The University of Hong Kong (HKU)](https://www.hku.hk/), supervised by [Professor Edmund Y. Lam](https://www.eee.hku.hk/~elam/) and [Professor Xihui Liu](https://xh-liu.github.io/). Before joining HKU, I obtained my Master's Degree in Computer Science from [Northwestern University (NU)](https://www.northwestern.edu/) and a Double Bachelor's Degree in Computer Science and Finance from [Wake Forest University (WFU)](https://www.wfu.edu/).
+
+My research interests lie in Computer Vision, 3D Vision, Computational Imaging, and AI. Below are some of my selected publications. You can click on the preview images to enlarge them.  
+For the complete list of my works, please visit my [Google Scholar](https://scholar.google.com/citations?user=dinpqugAAAAJ&hl=en). I am always open to discussing research ideas and potential collaborations. Feel free to contact me using the information provided at the bottom of this page.
