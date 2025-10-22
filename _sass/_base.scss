@@ -1423,24 +1423,3 @@ figure.cover {
     color: #23212d !important;
   }
 }
-
-
-/* --- force enlarge the preview image itself --- */
-
-/* publications 列表页 & 首页 selected publications 都覆盖到 */
-.publications ol.bibliography li .preview,
-.selected-publications ol.bibliography li .preview,
-img.preview,
-.preview > img {
-  width: 100% !important;    /* 覆盖内联的 width=120 之类的 */
-  height: auto !important;   /* 等比例拉伸 */
-  max-width: none !important;
-}
-
-/* 可选：如果图片外层还有很小的容器，再兜底让容器也占满左列 */
-.publications ol.bibliography li .preview,
-.selected-publications ol.bibliography li .preview {
-  display: block !important;
-  max-width: 100% !important;
-}
-
