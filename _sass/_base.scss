@@ -1425,56 +1425,22 @@ figure.cover {
 }
 
 
-/* ===== Bigger thumbnails + two-column layout for publications ===== */
+/* --- force enlarge the preview image itself --- */
 
-/* 列表项改为两列布局：左图固定宽度，右侧文字自适应 */
-.publications ol.bibliography li {
-  display: grid !important;
-  grid-template-columns: 380px 1fr;   /* ← 想再大就把 380px 改比如 440px/480px */
-  column-gap: 18px;
-  align-items: start;
+/* publications 列表页 & 首页 selected publications 都覆盖到 */
+.publications ol.bibliography li .preview,
+.selected-publications ol.bibliography li .preview,
+img.preview,
+.preview > img {
+  width: 100% !important;    /* 覆盖内联的 width=120 之类的 */
+  height: auto !important;   /* 等比例拉伸 */
+  max-width: none !important;
 }
 
-/* 预览图占左列 */
-.publications ol.bibliography li .preview {
-  grid-column: 1 !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;               /* 去掉右侧挤压间距 */
-  border-radius: 10px;
-}
-
-/* 右侧所有非预览内容占右列 */
-.publications ol.bibliography li > :not(.preview) {
-  grid-column: 2 !important;
-}
-
-/* 首页“selected publications” 用的是同一套结构，额外再兜底一次（可选） */
-.selected-publications ol.bibliography li {
-  display: grid !important;
-  grid-template-columns: 380px 1fr;
-  column-gap: 18px;
-  align-items: start;
-}
+/* 可选：如果图片外层还有很小的容器，再兜底让容器也占满左列 */
+.publications ol.bibliography li .preview,
 .selected-publications ol.bibliography li .preview {
-  grid-column: 1 !important;
-  width: 100% !important;
-  margin: 0 !important;
-  border-radius: 10px;
-}
-.selected-publications ol.bibliography li > :not(.preview) {
-  grid-column: 2 !important;
+  display: block !important;
+  max-width: 100% !important;
 }
 
-/* 小屏自动回到单列，避免挤爆 */
-@media (max-width: 768px) {
-  .publications ol.bibliography li,
-  .selected-publications ol.bibliography li {
-    display: block !important;
-  }
-  .publications ol.bibliography li .preview,
-  .selected-publications ol.bibliography li .preview {
-    width: 100% !important;
-    margin: 0 0 10px 0 !important;
-  }
-}
