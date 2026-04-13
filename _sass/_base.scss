@@ -776,9 +776,11 @@ footer.sticky-bottom {
           }
         }
 
-        > em {
-          border-bottom: 1px solid;
+        > .author-self {
           font-style: normal;
+          font-weight: 700;
+          color: #000 !important;
+          border-bottom: none;
         }
 
         > span.more-authors {
