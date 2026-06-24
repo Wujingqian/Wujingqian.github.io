@@ -64,6 +64,16 @@ layout: default
       {% include selected_papers.liquid %}
     {% endif %}
 
+    <!-- Academic service -->
+    {% if page.academic_service and page.academic_service.enabled %}
+      <h2>{{ page.academic_service.title | default: 'Academic Service' }}</h2>
+      <ul>
+        {% for item in page.academic_service.items %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
     <!-- Social -->
     {% if page.social %}
       <div class="social">
