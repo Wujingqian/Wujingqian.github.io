@@ -19,7 +19,7 @@ academic_service:
   enabled: true
   title: Academic Service
   items:
-    - "Reviewer: IEEE Transactions on Image Processing (TIP), AAAI Conference on Artificial Intelligence (AAAI), Pattern Recognition, and Engineering Applications of Artificial Intelligence."
+    - "Reviewer: IEEE Transactions on Image Processing (TIP), AAAI Conference on Artificial Intelligence (AAAI), Pattern Recognition (PR), and Engineering Applications of Artificial Intelligence (EAAI)."
 
 announcements:
   enabled: false # includes a list of news items
