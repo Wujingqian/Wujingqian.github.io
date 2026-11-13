@@ -102,11 +102,7 @@
         {%- endif -%}
       {% endfor %}
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
-      {%- assign more_authors_hide = more_authors | append: ' more author' -%}
       {% if more_authors > 0 %}
-        {%- if more_authors > 1 -%}
-          {% assign more_authors_hide = more_authors_hide | append: 's' %}
-        {%- endif -%}
         {% assign more_authors_show = '' %}
         {%- for author in entry.author_array offset: author_array_limit -%}
           {% assign author_separator = ', ' %}
@@ -119,33 +115,24 @@
           {% assign more_authors_show = more_authors_show | append: author_separator | append: author.first | append: ' ' | append: author.last %}
         {%- endfor -%}
         {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        <span
-          class="more-authors"
-          role="button"
-          tabindex="0"
+        {%- comment -%}Keep the leading author separator adjacent to the preceding name.{%- endcomment -%}
+        <span class="author-tail" id="{{ entry.key }}-author-tail">{{- more_authors_show -}}</span>
+        <span class="author-ellipsis" hidden> …</span>
+        <button
+          type="button"
+          class="author-toggle"
           aria-expanded="true"
-          title="Click to collapse authors"
+          aria-controls="{{ entry.key }}-author-tail"
           onclick="
             var expanded = this.getAttribute('aria-expanded') === 'true';
-            this.querySelector('.author-tail').hidden = expanded;
-            this.querySelector('.author-count').hidden = !expanded;
+            this.parentElement.querySelector('.author-tail').hidden = expanded;
+            this.parentElement.querySelector('.author-ellipsis').hidden = !expanded;
             this.setAttribute('aria-expanded', String(!expanded));
-            this.title = expanded ? 'Click to show all authors' : 'Click to collapse authors';
-          "
-          onkeydown="
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault();
-              this.click();
-            }
+            this.textContent = expanded ? 'Show all authors' : 'Show fewer';
           "
         >
-          {%- comment -%}Keep the leading author separator adjacent to the preceding name.{%- endcomment -%}
-          <span class="author-tail">{{- more_authors_show -}}</span>
-          <span class="author-count" hidden>
-            {%- if author_array_limit > 1 -%},{%- endif %}
-            and {{ more_authors_hide -}}
-          </span>
-        </span>
+          Show fewer
+        </button>
       {% endif %}
       {% if entry.annotation %}
         <i

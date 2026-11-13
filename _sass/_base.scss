@@ -783,14 +783,26 @@ footer.sticky-bottom {
           border-bottom: none;
         }
 
-        > span.more-authors {
+        .author-toggle {
+          background: none;
+          border: 0;
           color: var(--global-text-color-light);
-          border-bottom: 1px dashed var(--global-text-color-light);
           cursor: pointer;
+          font: inherit;
+          font-size: 0.85em;
+          margin-left: 0.4rem;
+          padding: 0;
+          white-space: nowrap;
 
           &:hover {
-            color: var(--global-text-color);
-            border-bottom: 1px dashed var(--global-text-color);
+            color: var(--global-theme-color);
+            text-decoration: underline;
+          }
+
+          &:focus-visible {
+            color: var(--global-theme-color);
+            outline: 2px solid var(--global-theme-color);
+            outline-offset: 2px;
           }
         }
       }
