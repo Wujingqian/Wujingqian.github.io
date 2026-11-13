@@ -102,7 +102,6 @@
         {%- endif -%}
       {% endfor %}
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
-
       {%- assign more_authors_hide = more_authors | append: ' more author' -%}
       {% if more_authors > 0 %}
         {%- if more_authors > 1 -%}
@@ -110,30 +109,42 @@
         {%- endif -%}
         {% assign more_authors_show = '' %}
         {%- for author in entry.author_array offset: author_array_limit -%}
-          {% assign more_authors_show = more_authors_show | append: author.first | append: ' ' | append: author.last %}
-          {% unless forloop.last %}
-            {% assign more_authors_show = more_authors_show | append: ', ' %}
-          {% endunless %}
+          {% assign author_separator = ', ' %}
+          {% if author_array_size == 2 %}
+            {% assign author_separator = ' ' %}
+          {% endif %}
+          {% if forloop.last %}
+            {% assign author_separator = author_separator | append: 'and ' %}
+          {% endif %}
+          {% assign more_authors_show = more_authors_show | append: author_separator | append: author.first | append: ' ' | append: author.last %}
         {%- endfor -%}
         {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        , and
         <span
           class="more-authors"
-          title="click to view {{ more_authors_hide }}"
+          role="button"
+          tabindex="0"
+          aria-expanded="true"
+          title="Click to collapse authors"
           onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var more_authors_text = element.text() == '{{ more_authors_hide }}' ? '{{ more_authors_show }}' : '{{ more_authors_hide }}';
-              var cursorPosition = 0;
-              var textAdder = setInterval(function(){
-                element.html(more_authors_text.substring(0, cursorPosition + 1));
-                if (++cursorPosition == more_authors_text.length){
-                  clearInterval(textAdder);
-                }
-            }, '{{ site.more_authors_animation_delay }}');
+            var expanded = this.getAttribute('aria-expanded') === 'true';
+            this.querySelector('.author-tail').hidden = expanded;
+            this.querySelector('.author-count').hidden = !expanded;
+            this.setAttribute('aria-expanded', String(!expanded));
+            this.title = expanded ? 'Click to show all authors' : 'Click to collapse authors';
+          "
+          onkeydown="
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              this.click();
+            }
           "
         >
-          {{- more_authors_hide -}}
+          {%- comment -%}Keep the leading author separator adjacent to the preceding name.{%- endcomment -%}
+          <span class="author-tail">{{- more_authors_show -}}</span>
+          <span class="author-count" hidden>
+            {%- if author_array_limit > 1 -%},{%- endif %}
+            and {{ more_authors_hide -}}
+          </span>
         </span>
       {% endif %}
       {% if entry.annotation %}
