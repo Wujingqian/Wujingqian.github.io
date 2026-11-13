@@ -136,7 +136,11 @@
     });
     scrub?.addEventListener("input", () => {
       pause();
-      if (Number.isFinite(video.duration)) video.currentTime = (video.duration * Number(scrub.value)) / 100;
+      if (Number.isFinite(video.duration)) {
+        // Seeking exactly to the end of a looping video can wrap to its first frame.
+        const lastFrameTime = Math.max(0, video.duration - 1 / 60);
+        video.currentTime = Math.min((video.duration * Number(scrub.value)) / 100, lastFrameTime);
+      }
     });
     if ("IntersectionObserver" in window) {
       new IntersectionObserver((entries) => {
