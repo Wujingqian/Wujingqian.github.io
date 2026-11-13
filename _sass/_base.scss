@@ -767,6 +767,16 @@ footer.sticky-bottom {
       }
 
       .author {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        column-gap: 8px;
+
+        .author-text {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -776,33 +786,78 @@ footer.sticky-bottom {
           }
         }
 
-        > .author-self {
+        .author-self {
           font-style: normal;
           font-weight: 700;
-          color: #000 !important;
+          color: var(--global-text-color);
           border-bottom: none;
         }
 
         .author-toggle {
-          background: none;
-          border: 0;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 26px;
+          height: 26px;
+          padding: 0;
+          border: 1px solid var(--global-divider-color);
+          border-radius: 6px;
+          background: var(--global-bg-color);
           color: var(--global-text-color-light);
           cursor: pointer;
-          font: inherit;
-          font-size: 0.85em;
-          margin-left: 0.4rem;
-          padding: 0;
-          white-space: nowrap;
+
+          .author-toggle-icon {
+            flex: none;
+            transition: transform 120ms ease;
+          }
+
+          &[aria-expanded="false"] .author-toggle-icon {
+            transform: rotate(180deg);
+          }
 
           &:hover {
             color: var(--global-theme-color);
-            text-decoration: underline;
+            border-color: var(--global-theme-color);
+            background: color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color));
           }
 
           &:focus-visible {
-            color: var(--global-theme-color);
             outline: 2px solid var(--global-theme-color);
-            outline-offset: 2px;
+            outline-offset: 3px;
+          }
+
+          .author-toggle-tooltip {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            z-index: 10;
+            padding: 5px 8px;
+            border-radius: 4px;
+            background: var(--global-text-color);
+            color: var(--global-bg-color);
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 1.4;
+            white-space: nowrap;
+            pointer-events: none;
+            visibility: hidden;
+          }
+
+          &:not([data-tooltip-dismissed]):hover .author-toggle-tooltip,
+          &:not([data-tooltip-dismissed]):focus-visible .author-toggle-tooltip {
+            visibility: visible;
+          }
+
+          @media (pointer: coarse) {
+            width: 44px;
+            height: 44px;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .author-toggle-icon {
+              transition: none;
+            }
           }
         }
       }

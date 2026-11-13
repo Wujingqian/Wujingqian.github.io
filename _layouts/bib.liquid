@@ -51,98 +51,116 @@
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->
     <div class="author">
-      {% assign author_array_size = entry.author_array | size %}
+      <span class="author-text">
+        {% assign author_array_size = entry.author_array | size %}
 
-      {% assign author_array_limit = author_array_size %}
-      {% if site.max_author_limit and author_array_size > site.max_author_limit %}
-        {% assign author_array_limit = site.max_author_limit %}
-      {% endif %}
-
-      {%- for author in entry.author_array limit: author_array_limit -%}
-        {% assign author_is_self = false %}
-        {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
-        {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        {% if site.scholar.last_name contains author_last_name %}
-          {% if site.scholar.first_name contains author.first %}
-            {% assign author_is_self = true %}
-          {% endif %}
-        {%- endif -%}
-        {% assign coauthor_url = null %}
-        {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
-        {% if site.data.coauthors[clean_last_name] %}
-          {%- for coauthor in site.data.coauthors[clean_last_name] -%}
-            {% if coauthor.firstname contains author.first %}
-              {%- assign coauthor_url = coauthor.url -%}
-              {% break %}
-            {%- endif -%}
-          {% endfor %}
-        {%- endif -%}
-
-        {%- if forloop.length > 1 -%}
-          {% if forloop.first == false -%}
-            {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
-          {%- endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+        {% assign author_array_limit = author_array_size %}
+        {% if site.max_author_limit and author_array_size > site.max_author_limit %}
+          {% assign author_array_limit = site.max_author_limit %}
         {% endif %}
-        {%- if author_is_self -%}
-          <span class="author-self">
-            {{- author.first }}
-            {{ author_last_html -}}
-          </span>
-        {%- else -%}
-          {%- if coauthor_url -%}
-            <a href="{{ coauthor_url }}">
+
+        {%- for author in entry.author_array limit: author_array_limit -%}
+          {% assign author_is_self = false %}
+          {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+          {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+          {% if site.scholar.last_name contains author_last_name %}
+            {% if site.scholar.first_name contains author.first %}
+              {% assign author_is_self = true %}
+            {% endif %}
+          {%- endif -%}
+          {% assign coauthor_url = null %}
+          {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
+          {% if site.data.coauthors[clean_last_name] %}
+            {%- for coauthor in site.data.coauthors[clean_last_name] -%}
+              {% if coauthor.firstname contains author.first %}
+                {%- assign coauthor_url = coauthor.url -%}
+                {% break %}
+              {%- endif -%}
+            {% endfor %}
+          {%- endif -%}
+
+          {%- if forloop.length > 1 -%}
+            {% if forloop.first == false -%}
+              {%- if forloop.length > 2 %}, {% elsif forloop.length == 2 %}  {% endif %}
+            {%- endif %}
+            {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
+          {% endif %}
+          {%- if author_is_self -%}
+            <span class="author-self">
               {{- author.first }}
               {{ author_last_html -}}
-            </a>
+            </span>
           {%- else -%}
-            {{- author.first }}
-            {{ author_last_html -}}
-          {% endif %}
-        {%- endif -%}
-      {% endfor %}
-      {%- assign more_authors = author_array_size | minus: author_array_limit -%}
-      {%- if more_authors > 0 -%}
-        {%- assign more_authors_show = '' -%}
-        {%- for author in entry.author_array offset: author_array_limit -%}
-          {% assign author_separator = ', ' %}
-          {% if author_array_size == 2 %}
-            {% assign author_separator = ' ' %}
-          {% endif %}
-          {% if forloop.last %}
-            {% assign author_separator = author_separator | append: 'and ' %}
-          {% endif %}
-          {% assign more_authors_show = more_authors_show | append: author_separator | append: author.first | append: ' ' | append: author.last %}
-        {%- endfor -%}
-        {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
-        {%- comment -%}Keep the leading author separator adjacent to the preceding name.{%- endcomment -%}
-        <span class="author-tail" id="{{ entry.key }}-author-tail">{{- more_authors_show -}}</span>
-        <span class="author-ellipsis" hidden> …</span>
+            {%- if coauthor_url -%}
+              <a href="{{ coauthor_url }}">
+                {{- author.first }}
+                {{ author_last_html -}}
+              </a>
+            {%- else -%}
+              {{- author.first }}
+              {{ author_last_html -}}
+            {% endif %}
+          {%- endif -%}
+        {% endfor %}
+        {%- assign more_authors = author_array_size | minus: author_array_limit -%}
+        {%- if more_authors > 0 -%}
+          {%- assign more_authors_show = '' -%}
+          {%- for author in entry.author_array offset: author_array_limit -%}
+            {% assign author_separator = ', ' %}
+            {% if author_array_size == 2 %}
+              {% assign author_separator = ' ' %}
+            {% endif %}
+            {% if forloop.last %}
+              {% assign author_separator = author_separator | append: 'and ' %}
+            {% endif %}
+            {% assign more_authors_show = more_authors_show | append: author_separator | append: author.first | append: ' ' | append: author.last %}
+          {%- endfor -%}
+          {%- assign more_authors_show = more_authors_show | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+          {%- comment -%}Keep the leading author separator adjacent to the preceding name.{%- endcomment -%}
+          <span class="author-tail" id="{{ entry.key }}-author-tail">{{- more_authors_show -}}</span>
+          <span class="author-ellipsis" hidden> …</span>
+        {% endif %}
+        {% if entry.annotation %}
+          <i
+            class="fa-solid fa-circle-info ml-1"
+            data-toggle="popover"
+            data-placement="top"
+            data-html="true"
+            data-content="{{ entry.annotation | escape }}"
+          >
+          </i>
+        {% endif %}
+      </span>
+      {% if more_authors > 0 %}
         <button
           type="button"
           class="author-toggle"
           aria-expanded="true"
           aria-controls="{{ entry.key }}-author-tail"
+          aria-label="Collapse author list"
           onclick="
             var expanded = this.getAttribute('aria-expanded') === 'true';
             this.parentElement.querySelector('.author-tail').hidden = expanded;
             this.parentElement.querySelector('.author-ellipsis').hidden = !expanded;
             this.setAttribute('aria-expanded', String(!expanded));
-            this.textContent = expanded ? 'Show all authors' : 'Show fewer';
+            var label = expanded ? 'Show all authors' : 'Collapse author list';
+            this.setAttribute('aria-label', label);
+            this.querySelector('.author-toggle-tooltip').textContent = label;
+            this.setAttribute('data-tooltip-dismissed', 'true');
+          "
+          onmouseenter="this.removeAttribute('data-tooltip-dismissed');"
+          onfocus="this.removeAttribute('data-tooltip-dismissed');"
+          onkeydown="
+            if (event.key === 'Escape') {
+              this.setAttribute('data-tooltip-dismissed', 'true');
+            }
           "
         >
-          Show fewer
+          <svg class="author-toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="m6 15 6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="author-toggle-tooltip" aria-hidden="true">Collapse author list</span>
         </button>
-      {% endif %}
-      {% if entry.annotation %}
-        <i
-          class="fa-solid fa-circle-info ml-1"
-          data-toggle="popover"
-          data-placement="top"
-          data-html="true"
-          data-content="{{ entry.annotation | escape }}"
-        >
-        </i>
       {% endif %}
     </div>
 
