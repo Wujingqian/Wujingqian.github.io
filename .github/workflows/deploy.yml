@@ -98,6 +98,19 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Save Research preview for review
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-preview
+          path: |
+            _site/research/
+            _site/assets/css/research.css
+            _site/assets/js/research.js
+            _site/assets/js/research-theme.js
+            _site/assets/research/
+          if-no-files-found: ignore
+          retention-days: 3
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4

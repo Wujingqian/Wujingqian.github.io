@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    {% include metadata.liquid %}
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="icon" href="{{ '/assets/research/favicon.svg' | relative_url }}" type="image/svg+xml">
+    <meta name="color-scheme" content="light dark">
+    <script src="{{ '/assets/js/research-theme.js' | relative_url | bust_file_cache }}"></script>
+    <link rel="stylesheet" href="{{ '/assets/css/research.css' | relative_url | bust_file_cache }}">
+    <script defer src="{{ '/assets/js/research.js' | relative_url | bust_file_cache }}"></script>
+  </head>
+  <body class="research-body">
+    {{ content }}
+  </body>
+</html>
