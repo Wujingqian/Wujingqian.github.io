@@ -102,8 +102,8 @@
         {%- endif -%}
       {% endfor %}
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
-      {% if more_authors > 0 %}
-        {% assign more_authors_show = '' %}
+      {%- if more_authors > 0 -%}
+        {%- assign more_authors_show = '' -%}
         {%- for author in entry.author_array offset: author_array_limit -%}
           {% assign author_separator = ', ' %}
           {% if author_array_size == 2 %}
