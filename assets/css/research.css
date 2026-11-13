@@ -1211,7 +1211,7 @@
     gap: 4px;
   }
   #jw-research-gallery h1 {
-    font-size: 70px;
+    font-size: clamp(48px, 16vw, 70px);
     letter-spacing: -4px;
   }
   #jw-research-gallery .title-star {
@@ -1509,7 +1509,7 @@
 }
 @media (max-width: 360px) {
   #jw-research-gallery h1 {
-    font-size: clamp(42px, 17vw, 62px);
+    font-size: clamp(42px, 15vw, 54px);
     letter-spacing: -3px;
   }
   #jw-research-gallery .title-star {
